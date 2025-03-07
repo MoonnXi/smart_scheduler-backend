@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.example.smart_schedulerbackend.mapper.CourseLibraryMapper">
+    <!-- 定义字段映射 -->
+    <resultMap id="CourseLibraryResultMap" type="org.example.smart_schedulerbackend.model.entity.CourseLibrary">
+        <id property="courseNumber" column="Course_number"/>
+        <result property="courseName" column="courseName"/>
+        <result property="courseCategories" column="Course_Categories"/>
+        <result property="courseProperties" column="Course_Properties"/>
+        <result property="courseType" column="Course_type"/>
+        <result property="courseNature" column="Course_nature"/>
+        <result property="englishName" column="English_name"/>
+        <result property="department" column="Department"/>
+        <result property="enabledStatus" column="Enabled_status"/>
+        <result property="creditHours" column="Credit_hours"/>
+        <result property="theoreticalHours" column="Theoretical_hours"/>
+        <result property="experimentalHours" column="Experimental_hours"/>
+        <result property="computerBasedHours" column="Computer-based_hours"/>
+        <result property="practicalHours" column="Practical_hours"/>
+        <result property="otherHours" column="Other_hours"/>
+        <result property="credits" column="Credits"/>
+        <result property="weeklyHours" column="Weekly_hours"/>
+        <result property="purelyPractical" column="Purely_practical"/>
+    </resultMap>
+
     <select id="getAllCourses" resultType="org.example.smart_schedulerbackend.model.entity.CourseLibrary">
         SELECT * FROM course_library
     </select>
