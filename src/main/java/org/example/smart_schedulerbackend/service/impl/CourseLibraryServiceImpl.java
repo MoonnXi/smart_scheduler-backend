@@ -21,6 +21,12 @@ public class CourseLibraryServiceImpl implements CourseLibraryService {
     @Override
     public List<CourseLibraryDTO> getAllCourses() {
         List<CourseLibrary> courses = courseLibraryMapper.getAllCourses();
+        for (CourseLibrary c : courses) {
+            System.out.println("courseNumber: " + c.getCourseNumber());
+            System.out.println("courseName: " + c.getCourseName());
+            System.out.println("department: " + c.getDepartment());
+            // 打印其他字段...
+        }
         return courses.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
