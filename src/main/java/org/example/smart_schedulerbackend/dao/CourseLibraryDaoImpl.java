@@ -23,7 +23,7 @@ public class CourseLibraryDaoImpl implements CourseLibraryDao {
 
     @Override
     public void insertCourse(CourseLibrary courseLibrary) {
-        courseMap.put(courseLibrary.getCourseNumber(), courseLibrary);
+        courseMap.put(courseLibrary.getCourseName(), courseLibrary);
     }
 
     @Override
