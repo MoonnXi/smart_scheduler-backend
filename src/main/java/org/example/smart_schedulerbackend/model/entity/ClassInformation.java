@@ -17,7 +17,7 @@ public class ClassInformation {
     private String graduationYear;
     private String graduationOrNot;
     private String classSize;
-    private String maleFemale;
+    private String genderRatio;
     private String maximumClassSize;
     private String admissionYear;
     private String faculties;
@@ -28,7 +28,7 @@ public class ClassInformation {
     private String fixedClassroom;
     private String remark;
     private String headteacherPhoneNumber;
-    private String headteacherHeadteacher;
+    private String headteacher2;
     private String finalAcademicYear;
     private String expandTheEnrollment;
     private String academicTutor;

@@ -5,39 +5,29 @@ import org.example.smart_schedulerbackend.model.entity.CourseLibrary;
 import org.example.smart_schedulerbackend.service.CourseLibraryService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/course-library")
+@RequestMapping("/courses")
 public class CourseLibraryController {
 
     @Autowired
     private CourseLibraryService courseLibraryService;
 
-    @GetMapping("/")
+    @GetMapping
     public List<CourseLibraryDTO> getAllCourses() {
-        return courseLibraryService.getAllCourses();
-    }
-
-    @GetMapping("/{courseNumber}")
-    public CourseLibraryDTO getCourseByNumber(@PathVariable String courseNumber) {
-        return courseLibraryService.getCourseByNumber(courseNumber);
-    }
-
-    @PostMapping
-    public void insertCourse(@RequestBody CourseLibrary courseLibrary) {
-        courseLibraryService.insertCourse(courseLibrary);
-    }
-
-    @PutMapping
-    public void updateCourse(@RequestBody CourseLibrary courseLibrary) {
-        courseLibraryService.updateCourse(courseLibrary);
-    }
-
-    @DeleteMapping("/{courseNumber}")
-    public void deleteCourse(@PathVariable String courseNumber) {
-        courseLibraryService.deleteCourse(courseNumber);
+        List<CourseLibrary> courses = courseLibraryService.getAllCourses();
+        return courses.stream()
+                .map(course -> {
+                    CourseLibraryDTO dto = new CourseLibraryDTO();
+                    BeanUtils.copyProperties(course, dto);
+                    return dto;
+                })
+                .collect(Collectors.toList());
     }
 }
