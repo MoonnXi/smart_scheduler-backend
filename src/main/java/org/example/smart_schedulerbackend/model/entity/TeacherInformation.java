@@ -3,7 +3,7 @@
 import lombok.Data;
 
 @Data
-public class Teacher {
+public class TeacherInformation {
     private String teacherNumber;
     private String teacherName;
     private String gender;
