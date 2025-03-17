@@ -14,5 +14,8 @@ spring:
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-mybatis:
-  mapper-locations: classpath:mapper/*.xml # 指定 MyBatis XML 文件路径
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: org.example.smart_schedulerbackend.model.entity
