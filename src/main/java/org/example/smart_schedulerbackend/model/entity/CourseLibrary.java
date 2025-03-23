@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class CourseLibrary {
-    private String coursenumber;
+    private String courseNumber;
     private String courseName;
     private String courseCategories;
     private String courseProperties;
@@ -24,7 +24,7 @@ public class CourseLibrary {
     private String purelyPractical;
 
     public void setCourseNumber(String courseNumber) {
-        this.coursenumber = courseNumber;
+        this.courseNumber = courseNumber;
     }
 
     public String getCourseName() {
@@ -165,6 +165,6 @@ public class CourseLibrary {
 
 
     public String getCourseNumber() {
-        return coursenumber;
+        return courseNumber;
     }
 }

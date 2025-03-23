@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.smart_schedulerbackend.mapper.ClassroomInformationMapper">
+    <resultMap id="ClassroomInformationMap" type="org.example.smart_schedulerbackend.model.entity.ClassroomInformation">
+        <id property="classroomNumber" column="classroom_number"/>
+        <result property="classroomName" column="classroom_name"/>
+        <result property="schoolDistricts" column="school_districts"/>
+        <result property="schoolBuilding" column="school_building"/>
+        <result property="floor" column="floor"/>
+        <result property="classroomLabels" column="classroom_labels"/>
+        <result property="classroomType" column="classroom_type"/>
+        <result property="capacity" column="capacity"/>
+        <result property="maximumCapacity" column="maximum_capacity"/>
+        <result property="airConditioning" column="air_conditioning"/>
+        <result property="status" column="Statu"/>
+        <result property="classroomDescription" column="classroom_description"/>
+        <result property="managementDepartment" column="management_department"/>
+        <result property="weeklyHours" column="weekly_hours"/>
+        <result property="classroomSize" column="classroom_size"/>
+        <result property="tableType" column="table_type"/>
+    </resultMap>
+
+    <select id="getAllClassroomInformation" parameterType="java.util.Map" resultMap="ClassroomInformationMap">
+        SELECT * FROM classroom_information WHERE school_districts = #{schoolDistricts} AND school_building = #{schoolBuilding}
+    </select>
+
+    <select id="countClassroomInformation" parameterType="java.util.Map" resultType="long">
+        SELECT COUNT(*) FROM classroom_information WHERE school_districts = #{schoolDistricts} AND school_building = #{schoolBuilding}
+    </select>
+</mapper>
+

@@ -1,9 +1,11 @@
 package org.example.smart_schedulerbackend.service;
 
 import org.example.smart_schedulerbackend.model.dto.CourseLibraryDTO;
+import org.example.smart_schedulerbackend.model.entity.ClassroomInformation;
 import org.example.smart_schedulerbackend.model.entity.CourseLibrary;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CourseLibraryService {
     List<CourseLibraryDTO> getAllCourses();
@@ -11,4 +13,7 @@ public interface CourseLibraryService {
     void insertCourse(CourseLibrary courseLibrary);
     void updateCourse(CourseLibrary courseLibrary);
     void deleteCourse(String courseNumber);
+    List<CourseLibrary> getAllCourseInformation(String department, String courseProperties,int page,int size);
+    List<Map<String,Object>> getAllCourseProperties();
+    Map<String,Object> countCourseInformation(String department, String courseProperties);
 }

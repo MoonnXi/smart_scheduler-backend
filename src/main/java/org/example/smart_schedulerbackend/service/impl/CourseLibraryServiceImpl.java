@@ -3,13 +3,19 @@ package org.example.smart_schedulerbackend.service.impl;
 import org.example.smart_schedulerbackend.dao.CourseLibraryDao;
 import org.example.smart_schedulerbackend.mapper.CourseLibraryMapper;
 import org.example.smart_schedulerbackend.model.dto.CourseLibraryDTO;
+import org.example.smart_schedulerbackend.model.entity.ClassroomInformation;
 import org.example.smart_schedulerbackend.model.entity.CourseLibrary;
+import org.example.smart_schedulerbackend.model.entity.ProfessionalData;
+import org.example.smart_schedulerbackend.model.entity.Teacher;
 import org.example.smart_schedulerbackend.service.CourseLibraryService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -56,4 +62,44 @@ public class CourseLibraryServiceImpl implements CourseLibraryService {
         BeanUtils.copyProperties(courseLibrary, dto);
         return dto;
     }
+
+    @Override
+    public List<CourseLibrary> getAllCourseInformation(String department, String courseProperties,int page,int size)
+    {
+        Map<String,Object> mapx = new HashMap<>();
+        mapx.put("department",department);
+        mapx.put("courseProperties",courseProperties);
+        List<CourseLibrary> dataMap = courseLibraryMapper.getAllCourseInformation(mapx);
+        int start = (page - 1) * size;
+        int end = Math.min(start + size, dataMap.size());
+        if (start >= dataMap.size()) {
+            return List.of();
+        }
+        return dataMap.subList(start,end);
+    }
+
+    @Override
+    public List<Map<String,Object>> getAllCourseProperties()
+    {
+        List<Map<String,Object>> resultList = new ArrayList<>();
+        List<CourseLibrary> dataMap = courseLibraryMapper.getAllCourseProperties();
+        for(CourseLibrary classInfo : dataMap)
+        {
+            Map<String,Object> map = new HashMap<>();
+            map.put("courseproperties",classInfo.getCourseProperties());
+            resultList.add(map);
+        }
+        return resultList;
+    };
+
+    @Override
+    public Map<String,Object> countCourseInformation(String department, String courseProperties)
+    {
+        Map<String,Object> mapx = new HashMap<>();
+        mapx.put("department",department);
+        mapx.put("courseProperties",courseProperties);
+        Map<String,Object> dataMap = new HashMap<>();
+        dataMap.put("number",courseLibraryMapper.countCourseInformation(mapx));
+        return dataMap;
+    };
 }

@@ -1,6 +1,7 @@
 package org.example.smart_schedulerbackend.controller;
 
 import org.example.smart_schedulerbackend.model.dto.CourseLibraryDTO;
+import org.example.smart_schedulerbackend.model.entity.ClassroomInformation;
 import org.example.smart_schedulerbackend.model.entity.CourseLibrary;
 import org.example.smart_schedulerbackend.service.CourseLibraryService;
 import org.springframework.beans.BeanUtils;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/course-library")
@@ -39,5 +41,23 @@ public class CourseLibraryController {
     @DeleteMapping("/{courseNumber}")
     public void deleteCourse(@PathVariable String courseNumber) {
         courseLibraryService.deleteCourse(courseNumber);
+    }
+
+    @PostMapping("/getallcourseinformation")
+    public List<CourseLibrary> getallcourseinformation(@RequestParam String department, @RequestParam String courseProperties,@RequestParam int page,@RequestParam int size)
+    {
+        return courseLibraryService.getAllCourseInformation(department,courseProperties,page,size);
+    }
+
+    @PostMapping("/getallcoursecategories")
+    public List<Map<String,Object>> getallcoursecategories()
+    {
+        return courseLibraryService.getAllCourseProperties();
+    }
+
+    @PostMapping("/countcourseinformation")
+    public Map<String,Object> countcourseinformation(@RequestParam String department, @RequestParam String courseProperties)
+    {
+        return courseLibraryService.countCourseInformation(department,courseProperties);
     }
 }
