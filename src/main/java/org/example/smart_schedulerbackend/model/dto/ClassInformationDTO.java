@@ -7,4 +7,5 @@ public class ClassInformationDTO {
     private String className;
     private String classSize;
     private String classNumber;
+    private String classSchedulingType;
 }

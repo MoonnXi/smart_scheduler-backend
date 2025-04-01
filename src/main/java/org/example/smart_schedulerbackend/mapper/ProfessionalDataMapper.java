@@ -16,4 +16,7 @@ public interface ProfessionalDataMapper extends BaseMapper<ProfessionalData> {
 
     @Select("SELECT professional_number, professional_name FROM professional_data WHERE affiliation = #{affiliation}")
     List<ProfessionalDTO> getProfessionalsByAffiliation(String affiliation);
+
+    List<ProfessionalData> getAllProfessionalData();
+
 }

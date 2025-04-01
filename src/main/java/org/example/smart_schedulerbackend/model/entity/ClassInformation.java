@@ -32,4 +32,5 @@ public class ClassInformation {
     private String finalAcademicYear;
     private String expandTheEnrollment;
     private String academicTutor;
+    private String classSchedulingType;
 }

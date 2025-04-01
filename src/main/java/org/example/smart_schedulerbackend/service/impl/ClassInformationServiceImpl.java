@@ -21,4 +21,9 @@ public class ClassInformationServiceImpl extends ServiceImpl<ClassInformationMap
     public List<ClassInformationDTO> getClassInformationsByMajor(String major) {
         return baseMapper.getClassInformationsByMajor(major);
     }
+
+    @Override
+    public List<ClassInformation> searchByKeyword(String keyword) {
+        return getBaseMapper().searchByKeyword(keyword);
+    }
 }

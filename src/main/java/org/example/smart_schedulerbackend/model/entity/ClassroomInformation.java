@@ -13,11 +13,14 @@ public class ClassroomInformation {
     private String classroomType;
     private String capacity;
     private String maximumCapacity;
-    private String airConditioning;
-    private String status; // 注意：原表中为Statu，这里修正为status以符合Java命名规范
+    private String status;
     private String classroomDescription;
     private String managementDepartment;
     private String weeklyHours;
     private String classroomSize;
     private String tableType;
+    private String projector;
+    private String lamp;
+    private String microphone;
+    private String airConditioning;
 }

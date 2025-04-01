@@ -30,4 +30,5 @@ public class SchedulingTask {
     private String classroomAssigned;
     private String departmentAssigned;
     private String timeAssigned;
+    private String attendanceRate;
 }

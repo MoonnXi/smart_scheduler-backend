@@ -9,4 +9,6 @@ public interface ClassInformationService {
     List<ClassInformation> getAllClasses();
 
     List<ClassInformationDTO> getClassInformationsByMajor(String major);
+
+    List<ClassInformation> searchByKeyword(String keyword);
 }
